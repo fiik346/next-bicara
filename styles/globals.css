@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.notap {
+		-webkit-tap-highlight-color: transparent;
+	}
+}
