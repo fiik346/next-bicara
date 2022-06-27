@@ -1,9 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 @layer utilities {
 	.notap {
 		-webkit-tap-highlight-color: transparent;
 	}
 }
+

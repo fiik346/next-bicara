@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
+import { signIn, signOut } from 'next-auth/react'
 
 function Navbar(){
 	const [menu, setMenu]= useState(false)
@@ -49,7 +50,7 @@ function Navbar(){
 			<header className="bg-white border-b">
 				<nav className="flex container mx-auto px-4 py-2 items-center flex-wrap">
 					<Link href="/">
-						<a className="text-xl text-gray-700 order-1 font-bold mr-auto relative h-8 flex w-28"><Image src="/bicara.svg" alt={brand} title={brand} layout="fill"/></a>
+						<a className="text-xl flex items-center justify-center order-1 font-bold mr-auto relative h-8 flex w-24 bg-blue-600 p-2 rounded text-white">{/*<Image src="/bicara.svg" alt={brand} title={brand} layout="fill"/>*/}BICARA</a>
 					</Link>
 
 					<ul className={`duration-300 delay-300 order-last flex-col md:flex md:flex-row md:w-auto md:order-2 mt-4 md:mt-0 items-center overflow-hidden w-full${menu?' flex':' hidden'}`}>
@@ -64,9 +65,7 @@ function Navbar(){
 						})}
 					</ul>
 
-					{ status !== 'authenticated' ? (<Link href="/api/auth/signin">
-						<a className="duration-300 rounded-lg bg-blue-600 text-white px-4 py-2 mr-2 hover:bg-blue-100 hover:text-blue-600 border border-blue-600 notap text-sm order-3">Login</a>
-					</Link>) :
+					{ status !== 'authenticated' ? (<button onClick={()=>{signIn()}} className="duration-300 rounded-lg bg-blue-600 text-white px-4 py-2 mr-2 hover:bg-blue-100 hover:text-blue-600 border border-blue-600 notap text-sm order-3">Login</button>) :
 					(<Link href="/admin">
 						<a className="duration-300 rounded-lg text-gray-600 mr-2 md:mr-0 ml-4 hover:text-blue-600 notap text-sm order-3">
 						<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
