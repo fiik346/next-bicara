@@ -53,12 +53,12 @@ function Navbar(){
 						<a className="text-xl flex items-center justify-center order-1 font-bold mr-auto relative h-8 flex w-24 bg-blue-600 p-2 rounded text-white">{/*<Image src="/bicara.svg" alt={brand} title={brand} layout="fill"/>*/}BICARA</a>
 					</Link>
 
-					<ul className={`duration-300 delay-300 order-last flex-col md:flex md:flex-row md:w-auto md:order-2 mt-4 md:mt-0 items-center overflow-hidden w-full${menu?' flex':' hidden'}`}>
+					<ul className={`duration-300 delay-300 order-last flex-col lg:flex lg:flex-row lg:w-auto lg:order-2 mt-4 lg:mt-0 items-center overflow-hidden w-full${menu?' flex':' hidden'}`}>
 						{nav.map((item,i) => {
 							return (
-								<li key={i} className="text-gray-600 w-full md:w-auto">
+								<li key={i} className="text-gray-600 w-full lg:w-auto">
 								<Link href={item.href}>
-									<a className="py-2 flex md:px-4 notap hover:text-blue-600">{item.name}</a>
+									<a className="py-2 flex lg:px-4 notap hover:text-blue-600">{item.name}</a>
 								</Link>
 								</li>
 							)
@@ -75,7 +75,7 @@ function Navbar(){
 						</Link>)
 					}
 
-					<button onClick={handleMenu} className="flex p-1 notap order-4 md:hidden">
+					<button onClick={handleMenu} className="flex p-1 notap order-4 lg:hidden">
 						<span className="sr-only">Menu</span>
 						<span className="flex items-center w-6 h-6 justify-center relative">
 							<span className={`duration-300 block absolute w-full border-b-2 border-gray-600 ${menu?'-rotate-45 top-[46%]':'top-1'}`}></span>
