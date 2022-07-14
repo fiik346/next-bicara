@@ -5,4 +5,8 @@
 	right:0;
 	top:0;
 	bottom:0;
+  z-index:10;
+}
+.admin-link {
+  @apply border-2 flex flex-col items-center justify-center text-gray-600 text-sm font-semibold rounded-lg p-4 hover:border-blue-600 hover:text-blue-600 notap bg-white duration-100
 }
