@@ -24,7 +24,18 @@ const fetcher = async url => {
   return res.json()
 }
 
-export default function editPost() {
+export default function EditPost() {
+
+  const fetcher = async url => {
+    const res = await fetch(url)
+    if(!res.ok) {
+      const error = new Error('An error occured while fetching data.')
+      error.status = res.status
+      error.info = await res.json()
+      throw error
+    }
+    return res.json()
+  }
 
   // Router
   const router = useRouter()

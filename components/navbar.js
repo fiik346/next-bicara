@@ -43,7 +43,7 @@ function Navbar(){
 			<header className="bg-white border-b">
 				<nav className="flex container mx-auto px-4 py-2 items-center flex-wrap">
 					<Link href="/">
-						<a className="text-xl order-1 font-bold mr-auto rounded text-gray-800 flex py-1"><img src="/bicara.svg" className="rounded w-8 h-8 mr-1" alt={brand} title={brand}/></a>
+						<a className="text-xl order-1 font-bold mr-auto rounded text-gray-800 flex py-1"><Image src="/bicara.svg" className="rounded w-8 h-8 mr-1" alt={brand} title={brand}/></a>
 					</Link>
 
 					<ul className={`duration-300 delay-300 order-last flex-col lg:flex lg:flex-row lg:w-auto lg:order-2 mt-4 lg:mt-0 items-center overflow-hidden w-full${menu?' flex':' hidden'}`}>

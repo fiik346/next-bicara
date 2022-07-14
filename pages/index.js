@@ -23,7 +23,7 @@ export default function Home() {
 						if(post.format === 'standard'){
 							return(
 								<div key={i} className="rounded-lg shadow-lg hover:shadow-sm duration-150 relative flex flex-col">
-									{post.featured_image && <Link href={'blog/'+post.slug}><a className="block rounded-t-lg overflow-hidden w-full"><Image src={post.featured_image}  width="640" height="320"/></a></Link>}
+									{post.featured_image && <Link href={'blog/'+post.slug}><a className="block rounded-t-lg overflow-hidden w-full"><Image src={post.featured_image} alt={post.title} width="640" height="320"/></a></Link>}
 									<div className="p-6">
 										<div className="mb-2 text-gray-600 text-sm">
 									

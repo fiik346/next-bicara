@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import Image from 'next/image'
 function Error({ statusCode }){
 	const statusCodes = {
 		400: 'Bad Request',
@@ -13,7 +13,7 @@ function Error({ statusCode }){
 			<Head>
 				<title>{statusCode} - {statusCodes[statusCode]}</title>
 			</Head>
-			<img src="/warning.svg" className="mb-4 w-64 mx-auto" />
+			<Image src="/warning.svg" className="mb-4 w-64 mx-auto" alt={statusCodes[statusCode]} />
 			<h1 className="font-semibold text-6xl mb-4">{statusCode}</h1>
 			<p>{statusCodes[statusCode]}</p>
 		</div>

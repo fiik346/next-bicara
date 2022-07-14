@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { useSession } from 'next-auth/react'
 import { getToken } from 'next-auth/jwt'
-export default function accountIndex() {
+
+export default function AccountIndex() {
 	const {data: session, status} = useSession()
 	const saveData = async (event) => {
 

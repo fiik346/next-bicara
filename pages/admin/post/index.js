@@ -4,9 +4,10 @@ import Image from 'next/image'
 
 import moment from 'moment'
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+export default function PostIndex(){
 
-export default function postIndex(){
+  const fetcher = (...args) => fetch(...args).then((res) => res.json())
+
   const {data, error} = useSWR('/api/posts?where={}', fetcher)
   return (
     <>
@@ -23,7 +24,7 @@ export default function postIndex(){
                 <div className="w-12">
                   {post.thumbnail ?
                     <div className="w-12 h-12">
-                      <img src={post.thumbnail} height="64" width="64" className="rounded w-auto h-12 w-12"/>
+                      <Image src={post.thumbnail} height="64" width="64" alt={post.title} className="rounded w-auto h-12 w-12"/>
                     </div>
                     :
                     <div className="h-12 w-12 rounded border flex items-center justify-center">
