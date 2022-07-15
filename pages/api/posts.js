@@ -29,6 +29,7 @@ export default async function indexPost(req, res) {
       headers
     })
     const result = await data.json()
+    console.log(result)
     res.status(data.status).json(result.results)
   }
 }

@@ -43,7 +43,7 @@ function Navbar(){
 			<header className="bg-white border-b">
 				<nav className="flex container mx-auto px-4 py-2 items-center flex-wrap">
 					<Link href="/">
-						<a className="text-xl order-1 font-bold mr-auto rounded text-gray-800 flex py-1"><Image src="/bicara.svg" className="rounded w-8 h-8 mr-1" alt={brand} title={brand}/></a>
+						<a className="text-xl order-1 font-bold mr-auto rounded text-gray-800 w-12 h-8"><Image src="/bicara.svg" className="rounded w-auto h-8 mr-1" width="210" height="140" alt={brand} title={brand}/></a>
 					</Link>
 
 					<ul className={`duration-300 delay-300 order-last flex-col lg:flex lg:flex-row lg:w-auto lg:order-2 mt-4 lg:mt-0 items-center overflow-hidden w-full${menu?' flex':' hidden'}`}>
@@ -58,17 +58,17 @@ function Navbar(){
   <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
 </svg>
 							</button>
-							<ul className={`absolute bg-white rounded border py-2 top-full right-0 z-10 ${isPopperOpen?'':' hidden'}`}>
+							<ul className={`absolute bg-white rounded border py-2 text-sm top-full right-0 z-20 ${isPopperOpen?'':' hidden'}`}>
 								<li>
 									<Link href="/account">
-										<a className="hover:text-blue-600 px-4">Account</a>
+										<a className="hover:text-blue-600 px-4 py-1 flex">Account</a>
 									</Link></li>
 								<li>
 									<Link href="/admin">
-										<a className="hover:text-blue-600 px-4">Admin</a>
+										<a className="hover:text-blue-600 px-4 py-1 flex">Admin</a>
 									</Link>
 								</li>
-								<li className="px-4" onClick={() => signOut()}>Log Out</li>
+								<li><span className="cursor-pointer px-4 py-1 hover:text-blue-600 flex" onClick={() => signOut()}>Log Out</span></li>
 							</ul>
 						</div>)
 						:

@@ -24,7 +24,7 @@ export default function PostIndex(){
                 <div className="w-12">
                   {post.thumbnail ?
                     <div className="w-12 h-12">
-                      <Image src={post.thumbnail} height="64" width="64" alt={post.title} className="rounded w-auto h-12 w-12"/>
+                      <Image src={post.thumbnail} height="128" width="128" alt={post.title} className="rounded w-auto h-12 w-12"/>
                     </div>
                     :
                     <div className="h-12 w-12 rounded border flex items-center justify-center">
@@ -35,7 +35,7 @@ export default function PostIndex(){
                 <div className="pl-4 w-full text-gray-600">
                   <h1 className="font-semibold text-md line-clamp-1"><Link href={`/admin/post/${post.objectId}`}>
                     <a className="stretch-link notap">{post.title}</a></Link></h1>
-                  <p><span className={post.draft ? 'text-red-500': 'text-green-500'}>{post.draft ? 'Draft' : 'Publish'}</span> <time>{moment(post.createdAt).format('D MMM YYYY')}</time></p>
+                  <p><span className={post.draft ? 'text-red-500': 'text-green-500'}>{post.draft ? 'Draft' : 'Publish'}</span> - <time>{moment(post.createdAt).format('D MMM YYYY')}</time></p>
                 </div>
               </div>
             )

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Head from 'next/head'
 import useSWR from 'swr'
+import moment from 'moment'
 import Error from '../_error'
 const fetcher = async url => {
 	const res = await fetch(url)
@@ -14,14 +15,28 @@ const fetcher = async url => {
 	}
 	return res.json()
 }
+
 export default function BlogPost() {
 	const router = useRouter()
 	const { slug } = router.query
-	const { data, error } = useSWR('https://public-api.wordpress.com/rest/v1.1/sites/bicara346.wordpress.com/posts/slug:' + slug , fetcher)
+	const { data, error } = useSWR(`/api/post/slug/${slug}` , fetcher)
+
 	return(
-		<>
-			<Head><title>{data && data.title +' - Bicara'}{error && '404 - Page Not Found'}</title></Head>
-			<div>{error && <Error statusCode={error.status} />}</div>
-		</>
+		<div className="my-4">
+			<Head><title>{data && data.title +' - Bicara'}</title></Head>
+			{error && <Error statusCode={error.status} />}
+      {data &&
+        <div>
+          <div className="mb-4">
+            <Image src={data.thumbnail ? data.thumbnail : '/example.png'} className="rounded-lg w-full" height="320" width="640"></Image>
+          </div>
+          <h1 className="text-2xl mb-4 font-semibold">{data.title}</h1>
+          <div className="flex">
+            <span className="mr-2">{data.author.name ? data.author.name : data.author.username}</span>
+            <time>{moment(data.createdAt).format('Do MMMM YYYY')}</time>
+          </div>
+        </div>
+      }
+		</div>
 	)
 }

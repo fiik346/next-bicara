@@ -1,24 +1,66 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect} from 'react'
 import { useSession } from 'next-auth/react'
-import { getToken } from 'next-auth/jwt'
+import { useRouter } from 'next/router'
+import useSWR from 'swr'
+
+const fetcher = (url, token) => fetch(url, {headers: {"token":token}}).then((res)=>res.json())
 
 export default function AccountIndex() {
-	const {data: session, status} = useSession()
-	const saveData = async (event) => {
 
+  const router = useRouter()
+
+  //User Data
+	const {data: session, status} = useSession()
+
+  const [name, setName] = useState('')
+  const [biodata, setBiodata] = useState('')
+
+
+  useEffect( async ()=>{
+    const res = await fetch('/api/users/me',{
+      method: 'PUT',
+      headers: { 
+        "token": session ? session.user.sessionToken : ''
+      },
+      body: JSON.stringify({ name, biodata })
+    })
+    const data = await res.json()
+    console.log(data)
+    if(session && res.ok){
+      setName(data.name)
+      setBiodata(data.biodata)
+    }
+  },[])
+
+  // save data
+	const saveData = async (event) => {
+    const res = await fetch(`/api/user/${session.user.objectId}`, {
+      method: 'PUT',
+      headers: {
+        "token": session.user.sessionToken
+      },
+      body: JSON.stringify({
+        name,
+        biodata
+      })
+    })
+    const result = await res.json()
+    if(res.ok){
+      alert(result)
+    }
 	}
 	return (
 		<div>
 		{session && <div className="my-4 p-4 rounded-lg bg-blue-300 text-gray-600 font-semibold">Welcome {session.user.username}</div>}
 		{session?
-			<form>
+			<form onSubmit={saveData}>
 				<div className="my-4">
 					<h4 className="mb-2 font-semibold">Name</h4>
-					<input className="px-4 py-2 w-full border rounded-lg" type="text" value={session.user.name} placeholder="Full Name"/>
+					<input className="px-4 py-2 w-full border rounded-lg" type="text" value={name} placeholder="Full Name"/>
 				</div>
 				<div className="my-4">
 					<h4 className="mb-2 font-semibold">Bio</h4>
-					<textarea placeholder="Add biodata" className="w-full px-4 py-2 h-16 rounded-lg border" />
+					<textarea placeholder="Add biodata" value={biodata} className="w-full px-4 py-2 h-16 rounded-lg border" />
 				</div>
 				<button className="px-4 py-2 bg-blue-600 text-white rounded-lg notap border border-blue-600 hover:bg-blue-100 hover:text-blue-600">Save</button>
 			</form>
