@@ -1,1 +1,5 @@
-<svg version="1.1" viewBox="0 0 210.31 140.2" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><g transform="matrix(1.3333 0 0 -1.3333 -70.722 973.18)"><path d="m105.62 677.31 52.578 52.574 52.574-52.574-52.574-52.578-52.578 52.578" fill="#0b1728"/><path d="m53.042 677.31 52.578 52.574 52.578-52.574-52.578-52.578-52.578 52.578" fill="#1c2224"/></g></svg>
+<svg width="35.603mm" height="15.824mm" version="1.1" viewBox="0 0 35.603 15.824" xmlns="http://www.w3.org/2000/svg">
+ <g transform="rotate(90)" stroke-linecap="square" stroke-width="7.4174" aria-label="B">
+  <path d="m11.868-3.9559v-7.9119h-7.9119v7.9119zm0-19.78v-7.9119h-7.9119v7.9119zm-11.868 23.736v-35.603h15.824v15.824h-11.868v3.9559h11.868v15.824z"/>
+ </g>
+</svg>

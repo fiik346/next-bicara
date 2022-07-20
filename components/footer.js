@@ -1,8 +1,11 @@
+import Link from 'next/link'
 export default function Footer() {
 	return (
-		<footer className="bg-gray-800 text-white mt-auto">
-			<div className="px-4 lg:px-8 mx-auto container">
-				<h2>Footer</h2>
+		<footer className="border-t py-8 mt-auto">
+			<div className="px-4 mx-auto container">
+        <div className="text-center">
+          <Link href="/about">About</Link>
+        </div>
 			</div>
 		</footer>
 	)

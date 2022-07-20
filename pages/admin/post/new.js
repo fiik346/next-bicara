@@ -8,8 +8,8 @@ import 'react-markdown-editor-lite/lib/index.css';
 const MdEditor = dynamic(() => import('react-markdown-editor-lite'), {
   ssr: false,
 });
-import MarkdownIt from 'markdown-it'
-
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 export default function NewPost() {
 
   // Set Data
@@ -23,7 +23,6 @@ export default function NewPost() {
 	const [value, setValue] = useState('')
   const [canPost, setCanPost] = useState(false)
 
-	const mdParser = new MarkdownIt()
   const router = useRouter()
 
   // Handle Content Value
@@ -159,7 +158,7 @@ export default function NewPost() {
         <div className="mb-4">
           <h2 className="mb-2 text-sm text-gray-600">Slug</h2>
           <div className="relative flex">
-			  	  <input type="text" className={`text-sm border text-gray-600 w-full pl-4 py-2 pr-12 rounded-lg focus:outline-blue-500${!canSlug ? ' bg-gray-200' : ' bg-white'}`} placeholder="example-slug" value={slug} onChange={(input)=>handleSlug(input.target.value)} required readOnly={!canSlug} pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$" autoCapitalize="none"/>
+			  	  <input type="text" className={`text-sm border text-gray-600 w-full pl-4 py-2 pr-12 rounded-lg${!canSlug ? ' bg-gray-200 focus:outline-none' : ' bg-white focus:outline-blue-600'}`} placeholder="example-slug" value={slug} onChange={(input)=>handleSlug(input.target.value)} required readOnly={!canSlug} pattern="^[a-z0-9]+(?:-[a-z0-9]+)*$" autoCapitalize="none"/>
             <span onClick={changeCanSlug}className="right-0 p-2 cursor-pointer border border-blue-600 bg-blue-600 text-white rounded-r-lg absolute">
               {!canSlug ? <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clipRule="evenodd" /></svg> }
             </span>
@@ -171,7 +170,7 @@ export default function NewPost() {
         </div>
 			</div>
 			<div className="md:order-1 md:pr-2 md:w-8/12">
-				<MdEditor style={{ height: '500px' }} value={value} renderHTML={text => mdParser.render(text)} onChange={handleValue} view={{ menu: true, md: true, html: false }} markdownClass="relative text-sm border rounded-lg" htmlClass="prose prose-sm"/>
+				<MdEditor style={{ height: '500px' }} value={value} renderHTML={text => <ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>} onChange={handleValue} view={{ menu: true, md: true, html: false }} markdownClass="relative text-sm border rounded-lg" htmlClass="prose prose-sm"/>
       <div className="mt-4">
         <button className="bg-blue-600 px-4 py-2 text-white rounded-lg text-sm mr-2">Publish</button>
         <span onClick={handleDraft} className="border rounded-lg cursor-pointer bg-white text-gray-600 px-4 py-2 hover:outline-blue-600">Save</span>

@@ -9,8 +9,8 @@ import 'react-markdown-editor-lite/lib/index.css';
 const MdEditor = dynamic(() => import('react-markdown-editor-lite'), {
   ssr: false,
 });
-import MarkdownIt from 'markdown-it'
-
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 // swr
 import useSWR from 'swr'
 const fetcher = async url => {
@@ -55,8 +55,6 @@ export default function EditPost() {
   const [draft, setDraft] = useState(null)
 	const [value, setValue] = useState('')
   const [canPost, setCanPost] = useState(true)
-
-	const mdParser = new MarkdownIt()
     
   // Handle Content Value
 	function handleValue({ html,text }) {
@@ -161,7 +159,7 @@ export default function EditPost() {
         </div>
 			</div>
 			<div className="md:order-1 md:pr-2 md:w-8/12">
-				<MdEditor style={{ height: '500px' }} value={value} renderHTML={text => mdParser.render(text)} onChange={handleValue} view={{ menu: true, md: true, html: false }} markdownClass="relative text-sm border rounded-lg" htmlClass="prose prose-sm"/>
+				<MdEditor style={{ height: '500px' }} value={value} renderHTML={(text) => { return (<ReactMarkdown remarkPlugins={[remarkGfm]}>{text}</ReactMarkdown>)}} onChange={handleValue} view={{ menu: true, md: true, html: false }} markdownClass="relative text-sm border rounded-lg" htmlClass="prose prose-sm"/>
       <div className="mt-4">
         <button className="bg-blue-600 px-4 py-2 text-white rounded-lg text-sm mr-2"> Update </button>
       </div>

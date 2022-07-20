@@ -10,7 +10,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
 export default function Home() {
 
-	const {data, error} = useSWR('/api/posts', fetcher)
+	const {data, error} = useSWR('/api/posts?order=-createdAt', fetcher)
   return (
     <>
       <Head>

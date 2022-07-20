@@ -32,6 +32,7 @@ export default function AccountIndex() {
     }
   },[])
 
+  const body = { name, biodata }
   // save data
 	const saveData = async (event) => {
     const res = await fetch(`/api/user/${session.user.objectId}`, {
@@ -39,10 +40,7 @@ export default function AccountIndex() {
       headers: {
         "token": session.user.sessionToken
       },
-      body: JSON.stringify({
-        name,
-        biodata
-      })
+      body: JSON.stringify(body)
     })
     const result = await res.json()
     if(res.ok){
@@ -56,11 +54,11 @@ export default function AccountIndex() {
 			<form onSubmit={saveData}>
 				<div className="my-4">
 					<h4 className="mb-2 font-semibold">Name</h4>
-					<input className="px-4 py-2 w-full border rounded-lg" type="text" value={name} placeholder="Full Name"/>
+					<input className="px-4 py-2 w-full border rounded-lg" type="text" value={name} placeholder="Full Name" onChange={(text)=>setName(text.target.value)}/>
 				</div>
 				<div className="my-4">
 					<h4 className="mb-2 font-semibold">Bio</h4>
-					<textarea placeholder="Add biodata" value={biodata} className="w-full px-4 py-2 h-16 rounded-lg border" />
+					<textarea placeholder="Add biodata" value={biodata} className="w-full px-4 py-2 h-16 rounded-lg border" onChange={(text)=>setBiodata(text.target.value)} />
 				</div>
 				<button className="px-4 py-2 bg-blue-600 text-white rounded-lg notap border border-blue-600 hover:bg-blue-100 hover:text-blue-600">Save</button>
 			</form>

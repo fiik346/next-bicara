@@ -40,10 +40,10 @@ function Navbar(){
 
 	return (
 		<>
-			<header className="bg-white border-b">
+			<header className="bg-white border-b sticky top-0 z-20">
 				<nav className="flex container mx-auto px-4 py-2 items-center flex-wrap">
 					<Link href="/">
-						<a className="text-xl order-1 font-bold mr-auto rounded text-gray-800 w-12 h-8"><Image src="/bicara.svg" className="rounded w-auto h-8 mr-1" width="210" height="140" alt={brand} title={brand}/></a>
+						<a className="text-xl order-1 font-bold mr-auto rounded text-gray-800 w-14 h-8 relative block"><Image src="/bicara.svg" className="rounded w-auto h-8 mr-1" layout="fill" alt={brand} title={brand}/></a>
 					</Link>
 
 					<ul className={`duration-300 delay-300 order-last flex-col lg:flex lg:flex-row lg:w-auto lg:order-2 mt-4 lg:mt-0 items-center overflow-hidden w-full${menu?' flex':' hidden'}`}>
@@ -52,7 +52,7 @@ function Navbar(){
 
 					{ status === 'unauthenticated' ? (<button onClick={()=>{signIn()}} aria-label="Login button" className="duration-300 rounded-lg bg-blue-600 text-white px-4 py-2 mr-1 hover:bg-blue-100 hover:text-blue-600 border border-blue-600 notap text-sm order-3">Login</button>)
 						:
-					status === 'authenticated' ? (<div className="duration-300 rounded-lg text-gray-600 mr-1 ml-4 notap order-3 p-1 relative flex items-center">
+					status === 'authenticated' ? (<div className="duration-300 rounded-lg text-gray-800 mr-1 ml-4 notap order-3 p-1 relative flex items-center">
 						<button className="hover:text-blue-600" onClick={() => setIsPopperOpen(!isPopperOpen)}>
 							<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
   <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -72,19 +72,19 @@ function Navbar(){
 							</ul>
 						</div>)
 						:
-					status === 'loading' && (<span className="duration-300 mr-1 order-3"><span className="w-8 h-8 bg-gray-200 rounded-full block"></span></span>)
+					status === 'loading' && (<span className="duration-300 mr-1 order-3 p-1"><span className="w-6 h-6 bg-gray-200 rounded-full block"></span></span>)
 					}
 			
 					<button className="p-1 notap order-4 mr-1 lg:mr-0">
-						<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
 					</button>
 
 					<button onClick={handleMenu} className="flex p-1 notap order-5 lg:hidden pr-0">
 						<span className="sr-only">Menu</span>
 						<span className="flex items-center w-6 h-6 justify-center relative">
-							<span className={`duration-300 block absolute w-full border-b-2 border-gray-600 ${menu?'-rotate-45 top-[46%]':'top-1'}`}></span>
-							<span className={`duration-300 block absolute border-b-2 border-gray-600 ${menu?'w-0':'w-full'}`}></span>
-							<span className={`duration-300 block absolute w-full border-b-2 border-gray-600 ${menu?'rotate-45 bottom-[46%]':'bottom-1'}`}></span>
+							<span className={`duration-300 block absolute w-full border-b-2 border-gray-800 ${menu?'-rotate-45 top-[46%]':'top-1'}`}></span>
+							<span className={`duration-300 block absolute border-b-2 border-gray-800 ${menu?'w-0':'w-full'}`}></span>
+							<span className={`duration-300 block absolute w-full border-b-2 border-gray-800 ${menu?'rotate-45 bottom-[46%]':'bottom-1'}`}></span>
 						</span>
 					</button>
 				</nav>

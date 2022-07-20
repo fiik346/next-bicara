@@ -8,7 +8,7 @@ export default function PostIndex(){
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json())
 
-  const {data, error} = useSWR('/api/posts?where={}', fetcher)
+  const {data, error} = useSWR('/api/posts?where={}&order=-createdAt', fetcher)
   return (
     <>
       <div className="my-4">
@@ -16,7 +16,10 @@ export default function PostIndex(){
           <form className="mr-2">
             <input name="q" type="search" className="text-sm border focus:outline-none px-4 py-2 rounded-lg w-full" placeholder="Search here"></input>
           </form>
-          <a className="bg-blue-600 border border-blue-600 text-white text-sm rounded-lg px-4 py-2 hover:bg-blue-100 hover:text-blue-600 ml-auto">New Post</a></div>
+          <Link href="/admin/post/new">
+            <a className="bg-blue-600 border border-blue-600 text-white text-sm rounded-lg px-4 py-2 hover:bg-blue-100 hover:text-blue-600 ml-auto">New Post</a>
+          </Link>
+        </div>
         <div className="grid grid-cols-1 gap-2">
           {data && data.map((post,i)=>{
             return(
