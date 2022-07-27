@@ -1,4 +1,3 @@
-import axios from 'axios'
 const apiUrl = process.env.API_URL
 const apiKey = process.env.API_KEY
 const appId = process.env.APP_ID
