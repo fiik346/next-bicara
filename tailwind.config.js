@@ -10,6 +10,9 @@ module.exports = {
 			}
 		},
   },
+  safelist: [
+    'youtube'
+  ],
   plugins: [
 		require('@tailwindcss/typography'),
 		require('@tailwindcss/line-clamp')

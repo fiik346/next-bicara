@@ -12,4 +12,9 @@
 		-webkit-tap-highlight-color: transparent;
 	}
 }
+@layet components {
+  .youtube {
+    @apply w-full h-auto aspect-video
+  }
+}
 
