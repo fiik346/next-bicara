@@ -23,7 +23,7 @@ export default function Navigations() {
 		<>
 			{navs.map((item,i) => 
 					<li key={i} className="text-gray-600 w-full lg:w-auto">
-						<Link href={item.href}><a className="py-2 flex px-4 notap hover:text-indigo-600">{item.name}</a></Link>
+						<Link href={item.href}><a className="py-2 flex px-6 md:px-4 notap hover:bg-gray-50 hover:text-blue-600 md:rounded-lg">{item.name}</a></Link>
 					</li>
 			)}
 		</>

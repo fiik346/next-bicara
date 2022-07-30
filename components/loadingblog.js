@@ -1,6 +1,6 @@
 export default function LoadingBlog() {
   return (
-    <div className="animate-pulse my-4">
+    <div className="animate-pulse my-4 min-h-screen">
       <div className="flex">
         <div className="h-10 mr-2 w-8/12 bg-gray-200"/>
         <div className="h-10 w-3/12 bg-gray-200"/>

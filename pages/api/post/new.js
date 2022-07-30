@@ -1,4 +1,3 @@
-import axios from 'axios'
 const apiUrl = process.env.API_URL
 const head   = {
   'Content-Type': 'application/json',

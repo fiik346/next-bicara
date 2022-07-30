@@ -8,7 +8,7 @@ export default async function indexPost(req, res) {
     "X-Parse-REST-API-Key": apiKey
   }
   const query = new URLSearchParams({
-    include: "author",
+    include: "author,category",
     where: `{"draft":false}`,
     limit: 10
   })

@@ -3,7 +3,7 @@ import Link from 'next/link'
 export default function Error({ status= 404, message= `Ups halaman yang kamu tuju tidak dapat ditemukan. Sepertinya telah dihapus atau dipindahkan.` }){
   return (
     <div className="my-8 text-center">
-      <Image src="/404.svg" height="320" width="640" />
+      <Image src="/404.jpg" height="320" width="320" alt="404 Error" />
       <p className="my-8 font-semibold text-gray-600 max-w-md mx-auto">{message}</p>
       <div className="text-sm my-8">
         <Link href="/">

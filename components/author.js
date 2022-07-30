@@ -7,7 +7,7 @@ export default function AuthorBox (props){
         <Image src={props.avatar} alt={props.name} layout="fill" className="rounded-full object-cover" />
       </div>
       <div className="ml-2">
-        <span className="text-indigo-600">{props.name}</span>
+        <span className="text-blue-600">{props.name}</span>
         <div className="text-gray-600 text-sm">
           <time className="">{moment(props.time).format('DD MMM YYYY')}</time> <span className="mx-1">-</span> <span>{props.readTime}</span>
         </div>                   

@@ -19,6 +19,7 @@ const fetcher = async url => {
 
 }
 import AuthorBelow from '../../components/authorbelow'
+import Breadcrumb from '../../components/breadcrumb'
 import AuthorBox from '../../components/author'
 import CommentsBox from '../../components/commentsbox'
 import LoadingBlog from '../../components/loadingblog'
@@ -30,7 +31,7 @@ export default function BlogPost() {
   //const { data, error } = { data: false, error: false }
 	return(
     <>
-		<div className="my-4 max-w-lg mx-auto">
+		<div className="my-4">
 			<Head>
         <title>{data ? data.title + ' - Bicara' : error ? error.status + ' - Error Accured':'Loading..'}</title>
       </Head>
@@ -39,8 +40,12 @@ export default function BlogPost() {
       }
       {data &&
         <>
-        <article className="mb-8">
+        <div className="mb-8">
           <div className="text-gray-800">
+            <Breadcrumb data={[
+              { href: '/category/'+data.category.slug,  title: data.category.name },
+              { title: data.title}
+            ]} />
             <div className="mb-5">
               <h1 className="text-3xl mb-2 font-bold text-gray-800">{data.title}</h1>
               {data.description && <p className="text-lg mb-4 text-gray-800">{data.description}</p>}
@@ -53,10 +58,10 @@ export default function BlogPost() {
           {
             <Share count={0} url={`https://www.bicara.my.id/blog/${data.slug}`} />
           }
-          <div className="my-4">
+          <article className="my-4">
            <div className="prose mx-auto" dangerouslySetInnerHTML={{ __html: data.content}} />
-          </div>
-        </article>
+          </article>
+        </div>
         <div className="-mx-4 my-6 border-b"/>
         <AuthorBelow author={data.author} />
         <div className="-mx-4 my-6 border-b"/>
